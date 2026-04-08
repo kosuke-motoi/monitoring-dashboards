@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>リクナビ vs マイナビ｜新卒就活サイト徹底比較</title>
+  <style>
+    :root {
+      --rikunabi: #e63946;
+      --mynavi: #2563eb;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --subtext: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ======= HERO ======= */
+    .hero {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: #fff;
+      text-align: center;
+      padding: 80px 24px 64px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 99px;
+      padding: 6px 20px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 span.r { color: #ff6b7a; }
+    .hero h1 span.m { color: #60a5fa; }
+    .hero h1 .vs {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 2px 14px;
+      font-size: 0.7em;
+      vertical-align: middle;
+      margin: 0 8px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .hero-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .logo-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 99px;
+      padding: 10px 24px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .logo-pill .dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .dot-r { background: #ff6b7a; }
+    .dot-m { background: #60a5fa; }
+
+    /* ======= SECTION ======= */
+    section { padding: 72px 24px; }
+    .container { max-width: 960px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--subtext);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 48px;
+    }
+
+    /* ======= OVERVIEW CARDS ======= */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 640px) { .overview-grid { grid-template-columns: 1fr; } }
+
+    .overview-card {
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .overview-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+    .card-r { background: linear-gradient(135deg, #e63946, #ff6b7a); }
+    .card-m { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+
+    .overview-card .site-name {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .overview-card .tagline {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+    .stat-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .stat {
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 12px 16px;
+      text-align: center;
+      min-width: 90px;
+    }
+    .stat .num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      display: block;
+    }
+    .stat .label {
+      font-size: 0.7rem;
+      opacity: 0.85;
+    }
+
+    /* ======= COMPARISON TABLE ======= */
+    .table-section { background: #fff; }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .compare-table thead tr {
+      background: #1e293b;
+      color: #fff;
+    }
+    .compare-table th {
+      padding: 18px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .compare-table th:first-child { text-align: left; width: 28%; }
+    .compare-table th.th-r { color: #ff6b7a; }
+    .compare-table th.th-m { color: #93c5fd; }
+
+    .compare-table tbody tr { border-bottom: 1px solid var(--border); }
+    .compare-table tbody tr:last-child { border-bottom: none; }
+    .compare-table tbody tr:hover { background: #f8fafc; }
+
+    .compare-table td {
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .compare-table td:first-child {
+      text-align: left;
+      font-weight: 700;
+      color: var(--subtext);
+      font-size: 0.85rem;
+    }
+    .compare-table td.td-r { border-left: 3px solid rgba(230,57,70,0.15); }
+    .compare-table td.td-m { border-left: 3px solid rgba(37,99,235,0.15); }
+
+    .tag {
+      display: inline-block;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .tag-r { background: #fff0f0; color: var(--rikunabi); }
+    .tag-m { background: #eff6ff; color: var(--mynavi); }
+    .tag-both { background: #f0fdf4; color: #15803d; }
+
+    /* ======= STRENGTH SECTION ======= */
+    .strength-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 640px) { .strength-grid { grid-template-columns: 1fr; } }
+
+    .strength-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .strength-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .strength-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .icon-r { background: #fff0f0; }
+    .icon-m { background: #eff6ff; }
+
+    .strength-header h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .strength-header h3 span.r { color: var(--rikunabi); }
+    .strength-header h3 span.m { color: var(--mynavi); }
+
+    .strength-list { list-style: none; }
+    .strength-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .strength-list li:last-child { border-bottom: none; }
+    .strength-list li::before {
+      content: '✓';
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .strength-r li::before { color: var(--rikunabi); }
+    .strength-m li::before { color: var(--mynavi); }
+
+    /* ======= WHO SECTION ======= */
+    .who-section { background: #f1f5f9; }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 640px) { .who-grid { grid-template-columns: 1fr; } }
+
+    .who-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .who-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid;
+    }
+    .who-card.card-rw h3 { color: var(--rikunabi); border-color: var(--rikunabi); }
+    .who-card.card-mw h3 { color: var(--mynavi); border-color: var(--mynavi); }
+
+    .persona {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .persona-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .persona p {
+      font-size: 0.88rem;
+      color: var(--subtext);
+      line-height: 1.5;
+    }
+    .persona strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    /* ======= VERDICT ======= */
+    .verdict-box {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .verdict-box h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .verdict-box p {
+      color: rgba(255,255,255,0.75);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .verdict-chips {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      border-radius: 99px;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .chip-r { background: var(--rikunabi); color: #fff; }
+    .chip-m { background: var(--mynavi); color: #fff; }
+
+    /* ======= FOOTER ======= */
+    footer {
+      background: #0f172a;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.8rem;
+    }
+    footer strong { color: rgba(255,255,255,0.8); }
+
+    /* ======= SCROLL ANIMATION ======= */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">新卒就活サイト 2026年度版 徹底比較</div>
+  <h1>
+    <span class="r">リクナビ</span>
+    <span class="vs">VS</span>
+    <span class="m">マイナビ</span>
+  </h1>
+  <p>どっちに登録すべき？特徴・強み・向いている人を分かりやすく解説します。</p>
+  <div class="hero-logos">
+    <div class="logo-pill"><span class="dot dot-r"></span>リクナビ</div>
+    <div class="logo-pill"><span class="dot dot-m"></span>マイナビ</div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section>
+  <div class="container">
+    <p class="section-label">Overview</p>
+    <h2 class="section-title">まず、それぞれをざっくり知ろう</h2>
+    <div class="overview-grid fade-in">
+      <div class="overview-card card-r">
+        <div class="site-name">リクナビ</div>
+        <div class="tagline">リクルートが運営する国内最大級の就活ナビ</div>
+        <p>1977年創業のリクルートが提供。大手・有名企業の求人数が多く、インターンシップ情報も充実。エントリー数・会員数ともにトップクラス。</p>
+        <div class="stat-row">
+          <div class="stat"><span class="num">約2万社</span><span class="label">掲載企業数</span></div>
+          <div class="stat"><span class="num">約100万人</span><span class="label">登録学生数</span></div>
+        </div>
+      </div>
+      <div class="overview-card card-m">
+        <div class="site-name">マイナビ</div>
+        <div class="tagline">毎日コミュニケーションズが運営する老舗就活ナビ</div>
+        <p>中堅・中小企業や地方企業の掲載が豊富。コラム・イベント・セミナーなどのサポートコンテンツが手厚く、就活初心者にも使いやすい。</p>
+        <div class="stat-row">
+          <div class="stat"><span class="num">約2万社</span><span class="label">掲載企業数</span></div>
+          <div class="stat"><span class="num">約95万人</span><span class="label">登録学生数</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="table-section">
+  <div class="container">
+    <p class="section-label">Comparison</p>
+    <h2 class="section-title">項目別 比較表</h2>
+    <div class="fade-in">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>比較項目</th>
+            <th class="th-r">リクナビ</th>
+            <th class="th-m">マイナビ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>運営会社</td>
+            <td class="td-r">株式会社リクルート</td>
+            <td class="td-m">株式会社マイナビ</td>
+          </tr>
+          <tr>
+            <td>大手企業の求人</td>
+            <td class="td-r"><span class="tag tag-r">◎ 非常に充実</span></td>
+            <td class="td-m"><span class="tag tag-m">○ 充実</span></td>
+          </tr>
+          <tr>
+            <td>中小・地方企業の求人</td>
+            <td class="td-r"><span class="tag tag-m">○ 充実</span></td>
+            <td class="td-m"><span class="tag tag-r">◎ 非常に充実</span></td>
+          </tr>
+          <tr>
+            <td>インターンシップ情報</td>
+            <td class="td-r"><span class="tag tag-r">◎ 非常に充実</span></td>
+            <td class="td-m"><span class="tag tag-m">○ 充実</span></td>
+          </tr>
+          <tr>
+            <td>就活コラム・ノウハウ</td>
+            <td class="td-r"><span class="tag tag-m">○ 充実</span></td>
+            <td class="td-m"><span class="tag tag-r">◎ 非常に充実</span></td>
+          </tr>
+          <tr>
+            <td>合同説明会・イベント</td>
+            <td class="td-r"><span class="tag tag-both">△ 普通</span></td>
+            <td class="td-m"><span class="tag tag-r">◎ 非常に充実</span></td>
+          </tr>
+          <tr>
+            <td>UI・使いやすさ</td>
+            <td class="td-r">シンプルで情報量多め</td>
+            <td class="td-m">見やすく初心者向け</td>
+          </tr>
+          <tr>
+            <td>スカウト機能</td>
+            <td class="td-r"><span class="tag tag-both">あり</span></td>
+            <td class="td-m"><span class="tag tag-both">あり</span></td>
+          </tr>
+          <tr>
+            <td>適性診断・自己分析ツール</td>
+            <td class="td-r"><span class="tag tag-both">あり</span></td>
+            <td class="td-m"><span class="tag tag-both">あり</span></td>
+          </tr>
+          <tr>
+            <td>登録料</td>
+            <td class="td-r"><span class="tag tag-both">無料</span></td>
+            <td class="td-m"><span class="tag tag-both">無料</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section>
+  <div class="container">
+    <p class="section-label">Strengths</p>
+    <h2 class="section-title">それぞれの強みを深掘り</h2>
+    <div class="strength-grid fade-in">
+      <div class="strength-card">
+        <div class="strength-header">
+          <div class="strength-icon icon-r">🔴</div>
+          <h3><span class="r">リクナビ</span>の強み</h3>
+        </div>
+        <ul class="strength-list strength-r">
+          <li>大手・有名企業へのエントリーに強い。超人気企業ほどリクナビ経由が多い</li>
+          <li>早期インターンシップ（サマーインターン）の情報が国内最多水準</li>
+          <li>AI によるオススメ企業提案など先進的な機能を搭載</li>
+          <li>「リクナビDIAGNOSIS」など独自の適性診断ツールが充実</li>
+          <li>OB・OG訪問サービスとの連携がしやすい</li>
+        </ul>
+      </div>
+      <div class="strength-card">
+        <div class="strength-header">
+          <div class="strength-icon icon-m">🔵</div>
+          <h3><span class="m">マイナビ</span>の強み</h3>
+        </div>
+        <ul class="strength-list strength-m">
+          <li>中堅・中小・地方企業の求人が豊富。地元就職を目指す人に最適</li>
+          <li>「マイナビ就活EXPO」など大型合同説明会を全国各地で開催</li>
+          <li>ES・面接対策コラムが充実しており就活初心者をサポート</li>
+          <li>業界研究・企業研究コンテンツの質・量ともにトップクラス</li>
+          <li>LINE連携など学生目線のUI・通知機能が使いやすい</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS IT FOR -->
+<section class="who-section">
+  <div class="container">
+    <p class="section-label">Who Should Use It</p>
+    <h2 class="section-title">こんな人におすすめ</h2>
+    <div class="who-grid fade-in">
+      <div class="who-card card-rw">
+        <h3>リクナビ に向いている人</h3>
+        <div class="persona">
+          <div class="persona-icon">🏢</div>
+          <div>
+            <strong>大手・メガベンチャー志望</strong>
+            <p>有名企業・上場企業へのエントリーを優先したい人</p>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="persona-icon">📅</div>
+          <div>
+            <strong>早期インターンに参加したい</strong>
+            <p>3年生の夏からインターンシップで差をつけたい人</p>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="persona-icon">🌏</div>
+          <div>
+            <strong>総合商社・金融・コンサル志望</strong>
+            <p>エリート就職路線を目指す理系・文系の学生</p>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="persona-icon">⚡</div>
+          <div>
+            <strong>スピード重視で動きたい</strong>
+            <p>一括エントリーや AI 提案で効率よく動きたい人</p>
+          </div>
+        </div>
+      </div>
+      <div class="who-card card-mw">
+        <h3>マイナビ に向いている人</h3>
+        <div class="persona">
+          <div class="persona-icon">🏘️</div>
+          <div>
+            <strong>地元・地方就職を希望</strong>
+            <p>Uターン・地元密着型の中小企業を探したい人</p>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="persona-icon">📚</div>
+          <div>
+            <strong>就活を一から学びたい</strong>
+            <p>自己分析・業界研究・ES対策をしっかりやりたい人</p>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="persona-icon">🤝</div>
+          <div>
+            <strong>合同説明会で企業を発掘したい</strong>
+            <p>まだ志望業界が絞れておらず、多くの企業を見たい人</p>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="persona-icon">🎓</div>
+          <div>
+            <strong>専門職・職種に特化して探したい</strong>
+            <p>医療・IT・福祉など専門系の中小・優良企業を探す人</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section>
+  <div class="container fade-in">
+    <div class="verdict-box">
+      <h2>結論：両方に登録するのがベスト！</h2>
+      <p>
+        リクナビとマイナビはそれぞれ掲載企業が異なります。片方だけでは見逃す求人が必ず出てきます。
+        登録は無料なので、<strong style="color:#fff">両サイトを併用</strong>して選択肢を最大化するのが就活成功の鉄則です。
+      </p>
+      <div class="verdict-chips">
+        <div class="chip chip-r">🔴 リクナビ → 大手・インターン重視</div>
+        <div class="chip chip-m">🔵 マイナビ → 中小・サポート重視</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>リクナビ vs マイナビ｜新卒就活サイト徹底比較</strong></p>
+  <p style="margin-top:8px">掲載情報は2026年4月時点のものです。最新情報は各公式サイトをご確認ください。</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

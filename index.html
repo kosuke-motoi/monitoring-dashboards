@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モニタリングダッシュボード</title>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --subtext: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    header span.badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--subtext);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+      border-color: var(--accent);
+    }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+      width: fit-content;
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .card p {
+      font-size: 0.85rem;
+      color: var(--subtext);
+      line-height: 1.6;
+    }
+    .card-meta {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 0;
+      color: var(--subtext);
+      font-size: 0.9rem;
+    }
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>モニタリングダッシュボード</h1>
+    <span class="badge">HR Tech SBU</span>
+  </header>
+  <main>
+    <div class="section-title">公開中のダッシュボード</div>
+    <div class="grid">
+
+      <a class="card" href="dashboards/rikunabi-vs-mynavi/">
+        <span class="card-tag">競合分析</span>
+        <h2>リクナビ vs マイナビ<br>新卒就活サイト比較</h2>
+        <p>掲載社数・求職者数・料金体系など主要指標の比較分析</p>
+        <div class="card-meta">最終更新: 2026年4月</div>
+      </a>
+
+      <!-- 新しいダッシュボードはここに追加 -->
+
+    </div>
+  </main>
+  <footer>HR Tech SBU &nbsp;|&nbsp; Monitoring Dashboards</footer>
+</body>
+</html>

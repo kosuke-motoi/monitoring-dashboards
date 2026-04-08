@@ -1,0 +1,18 @@
+# 機密ファイル
+gcp-oauth.keys.json
+*.keys.json
+*.credentials.json
+.env
+.env.*
+secrets/
+
+# SQL（社内クエリは除外）
+*.sql
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
